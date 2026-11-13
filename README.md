@@ -1,3 +1,9 @@
+> **Fork.** This is a fork of
+> [digital-IMEI/home-assistant-somtoday](https://github.com/digital-IMEI/home-assistant-somtoday),
+> maintained by [@victorclaessen](https://github.com/victorclaessen). It adds schedule
+> changes and cancellations (`afspraakitems`), a Roostertoetsen calendar and a
+> Laatste cijfer sensor. All credit for the original integration goes to digital-IMEI;
+> please report issues with this fork here, not upstream.
 # Somtoday for Home Assistant
 
 An unofficial, community integration for school schedules. Runs inside Home Assistant,
@@ -18,7 +24,7 @@ breaks retain the upcoming lesson time and classroom changes remain visible.
 
 Per-child devices, improved token renewal, separate exports for Rooster, Toets and
 other appointments, and readable HTML descriptions are included. See the
-[release history](https://github.com/digital-IMEI/home-assistant-somtoday/releases)
+[release history](https://github.com/victorclaessen/home-assistant-somtoday/releases)
 for all changes since 0.10.
 
 Update in HACS and restart Home Assistant. No account removal is needed.
@@ -48,7 +54,7 @@ depends on school/account permissions and has not been confirmed for all account
 
 ## Installation and updates
 
-In HACS, add `https://github.com/digital-IMEI/home-assistant-somtoday` as a custom
+In HACS, add `https://github.com/victorclaessen/home-assistant-somtoday` as a custom
 repository, category **Integration**. Download the latest numbered release and restart
 Home Assistant. Add **Somtoday** under **Settings → Devices & services**.
 For manual installation, copy `custom_components/somtoday` into your HA configuration.

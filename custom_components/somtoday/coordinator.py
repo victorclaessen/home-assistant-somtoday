@@ -374,7 +374,7 @@ class SomtodayCoordinator(DataUpdateCoordinator[dict[str, Any]]):
                 self.hass, DOMAIN, issue_id, is_fixable=False,
                 severity=ir.IssueSeverity.WARNING,
                 translation_key="calendar_sync_failed",
-                learn_more_url="https://github.com/digital-IMEI/home-assistant-somtoday#calendar-provider-compatibility",
+                learn_more_url="https://github.com/victorclaessen/home-assistant-somtoday#calendar-provider-compatibility",
             )
         else:
             ir.async_delete_issue(self.hass, DOMAIN, issue_id)

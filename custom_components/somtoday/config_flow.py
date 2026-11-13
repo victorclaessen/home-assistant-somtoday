@@ -656,6 +656,6 @@ class SomtodayOptionsFlow(config_entries.OptionsFlow):
                 "subject_placeholder": "{subject}",
                 "type_placeholder": "{type}",
                 "topic_placeholder": "{topic}",
-                "help_url": "https://github.com/digital-IMEI/home-assistant-somtoday#calendar-provider-compatibility",
+                "help_url": "https://github.com/victorclaessen/home-assistant-somtoday#calendar-provider-compatibility",
             },
         )

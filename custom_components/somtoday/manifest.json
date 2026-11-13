@@ -5,13 +5,13 @@
     "mobile_app"
   ],
   "codeowners": [
-    "@digital-IMEI"
+    "@victorclaessen"
   ],
   "config_flow": true,
-  "documentation": "https://github.com/digital-IMEI/home-assistant-somtoday",
+  "documentation": "https://github.com/victorclaessen/home-assistant-somtoday",
   "integration_type": "service",
   "iot_class": "cloud_polling",
-  "issue_tracker": "https://github.com/digital-IMEI/home-assistant-somtoday/issues",
+  "issue_tracker": "https://github.com/victorclaessen/home-assistant-somtoday/issues",
   "requirements": [],
-  "version": "0.11.10.1"
+  "version": "0.11.13"
 }
