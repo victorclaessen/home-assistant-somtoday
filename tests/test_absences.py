@@ -413,6 +413,7 @@ def _coordinator(monkeypatch, **client):
         "appointments": AsyncMock(return_value=[]),
         "appointment_items": AsyncMock(return_value=[]),
         "grades": AsyncMock(return_value=[]),
+        "student_class": AsyncMock(return_value="1B"),
         "holidays": AsyncMock(return_value=[]),
         "assessments": AsyncMock(return_value=[]),
         "registrations": AsyncMock(return_value=_overview()),

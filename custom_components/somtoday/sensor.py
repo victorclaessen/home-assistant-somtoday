@@ -32,6 +32,10 @@ async def async_setup_entry(
         SomtodayLatestGradeSensor(coordinator, entry, student)
         for student in coordinator.data.get("students", [])
     )
+    entities.extend(
+        SomtodayClassSensor(coordinator, entry, student)
+        for student in coordinator.data.get("students", [])
+    )
     for student in coordinator.data.get("students", []):
         route = entry.options.get("exports", {}).get(item_id(student), {})
         if isinstance(route, dict) and route.get("absences_enabled"):
@@ -181,6 +185,28 @@ class SomtodayLatestGradeSensor(CoordinatorEntity[SomtodayCoordinator], SensorEn
                 weging=latest["weging"], voldoende=latest["voldoende"], datum=latest["datum"],
             )
         return attributes
+
+
+class SomtodayClassSensor(CoordinatorEntity[SomtodayCoordinator], SensorEntity):
+    """The pupil's class (stamgroep), e.g. "1B"."""
+
+    _attr_has_entity_name = True
+    _attr_icon = "mdi:account-group"
+
+    def __init__(self, coordinator, entry, student):
+        super().__init__(coordinator)
+        self.student = item_id(student)
+        self._attr_device_info = student_device_info(entry, student)
+        self._attr_name = "Klas"
+        self._attr_unique_id = f"{entry.entry_id}_{self.student}_class"
+
+    @property
+    def available(self):
+        return super().available and self.native_value is not None
+
+    @property
+    def native_value(self):
+        return self.coordinator.data.get("class_by_student", {}).get(self.student)
 
 
 class _SomtodayRegistrationSensor(

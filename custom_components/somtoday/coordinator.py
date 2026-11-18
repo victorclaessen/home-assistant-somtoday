@@ -133,6 +133,21 @@ class SomtodayCoordinator(DataUpdateCoordinator[dict[str, Any]]):
                     grades.setdefault(pupil_id, None)
             self._grades = grades
             now = dt_util.now()
+            # Optional: the pupil's class. It rarely changes, so it is read at
+            # most every 6 hours; a failure keeps the last known class.
+            checked = getattr(self, "_classes_checked", None)
+            if checked is None or now - checked >= timedelta(hours=6):
+                classes = getattr(self, "_classes", {})
+                for pupil in students:
+                    pupil_id = item_id(pupil)
+                    try:
+                        classes[pupil_id] = await self.client.student_class(pupil_id)
+                    except SomtodayAuthenticationError:
+                        raise
+                    except (SomtodayApiError, ValueError, TypeError):
+                        classes.setdefault(pupil_id, None)
+                self._classes = classes
+                self._classes_checked = now
             if self._holidays_checked is None or now - self._holidays_checked >= timedelta(hours=6):
                 holiday_data = {}
                 for pupil in students:
@@ -412,4 +427,5 @@ class SomtodayCoordinator(DataUpdateCoordinator[dict[str, Any]]):
             "absences_by_student": self._absences,
             "measures_by_student": self._measures,
             "grades_by_student": getattr(self, "_grades", {}),
+            "class_by_student": getattr(self, "_classes", {}),
         }

@@ -1,8 +1,8 @@
 > **Fork.** This is a fork of
 > [digital-IMEI/home-assistant-somtoday](https://github.com/digital-IMEI/home-assistant-somtoday),
 > maintained by [@victorclaessen](https://github.com/victorclaessen). It adds schedule
-> changes and cancellations (`afspraakitems`), a Roostertoetsen calendar and a
-> Laatste cijfer sensor. All credit for the original integration goes to digital-IMEI;
+> changes and cancellations (`afspraakitems`), a Roostertoetsen calendar, a
+> Laatste cijfer sensor and a Klas sensor (stamgroep). All credit for the original integration goes to digital-IMEI;
 > please report issues with this fork here, not upstream.
 # Somtoday for Home Assistant
 

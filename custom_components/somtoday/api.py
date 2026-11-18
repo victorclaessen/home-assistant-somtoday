@@ -219,6 +219,17 @@ class SomtodayClient:
             params=[("periode", "SCHOOLJAAR")],
         )
 
+    async def student_class(self, student_id: str) -> str | None:
+        """The pupil's class (stamgroep) as the pupil portal shows it, e.g. "1B"."""
+        from urllib.parse import quote
+
+        from .pupil import class_name
+
+        return class_name(await self._get(
+            "/rest/v1/leerlingen/" + quote(str(student_id), safe=""),
+            params=[("additional", "stamgroep")],
+        ))
+
     async def active_measures(self, student_id: str) -> list[dict[str, Any]]:
         """Fetch measures still outstanding, the part a parent can act on.
 
